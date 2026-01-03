@@ -1,0 +1,493 @@
+/* GLOBAL RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f6f8; /* Light gray background */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-position: inside;
+    margin-left: 10px;
+}
+
+/* CONTAINER UTILITY */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HERO SECTION (Header) */
+.hero {
+    background: linear-gradient(135deg, #0a192f 0%, #112240 100%); /* Deep Navy */
+    color: #ffffff;
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 5px solid #64ffda; /* Teal accent line */
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #8892b0; /* Muted text */
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1rem;
+    color: #ccd6f6;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 8px 15px;
+    border: 1px solid #64ffda;
+    color: #64ffda;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+/* CONTENT SECTIONS */
+.section {
+    padding: 40px 0;
+}
+
+.section h3 {
+    font-size: 1.5rem;
+    color: #0a192f;
+    border-bottom: 2px solid #e6f1ff;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.section h3 i {
+    margin-right: 10px;
+    color: #0056b3;
+}
+
+/* JOB CARDS */
+.job, .education-item {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Subtle shadow */
+    border-left: 4px solid #0056b3; /* Blue accent bar */
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.job-header h4 {
+    font-size: 1.2rem;
+    color: #0a192f;
+    width: 100%;
+}
+
+.company {
+    font-weight: 600;
+    color: #0056b3;
+    font-size: 0.95rem;
+}
+
+.dates {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+    margin-left: auto; /* Pushes date to right */
+}
+
+.job ul {
+    margin-top: 15px;
+}
+
+.job li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* EDUCATION SPECIFIC */
+.education-item h4 {
+    color: #0a192f;
+    margin-bottom: 5px;
+}
+
+.education-item p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Badges Section */
+.badges-section {
+    text-align: center;
+    padding: 20px 0;
+    background: #fff;
+    /* Match the other sections */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+.badges-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allows wrapping on smaller screens */
+    gap: 30px;
+    /* Space between badges */
+}
+
+.badge-image {
+    height: 120px;
+    /* Set a uniform height */
+    width: auto;
+    /* Maintain aspect ratio */
+    transition: transform 0.3s ease;
+    /* Smooth hover effect */
+}
+
+.badge-image:hover {
+    transform: scale(1.1);
+    /* Slightly enlarge on hover */
+}
+
+/* FOOTER */
+
+/* 1. The Container: aligns the items side-by-side */
+.site-footer .footer-container {
+    display: flex;
+    justify-content: center; /* Centers them in the middle of the page */
+    align-items: center;     /* Aligns them vertically */
+    gap: 2rem;               /* Adds nice space between Copyright and Counter */
+    padding: 20px;
+    background-color: #0f172a; /* Dark blue background (adjust to match yours) */
+    color: #cbd5e1;          /* Light gray text */
+}
+
+/* 2. The Counter Badge: Makes it look like a distinct UI element */
+#counter {
+    margin: 0;               /* Remove default paragraph spacing */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle glass-effect background */
+    padding: 5px 15px;       /* Breathing room inside the badge */
+    border-radius: 999px;    /* Makes the edges perfectly round (pill shape) */
+    font-family: sans-serif; /* Clean font */
+    font-size: 0.85rem;      /* Slightly smaller than main text */
+    font-weight: 600;        /* Make the number pop a bit */
+    white-space: nowrap;     /* Keeps "Views: 100" on one line */
+    transition: all 0.3s ease; /* Smooth loading transition */
+}
+
+/* Optional: Add a tiny hover effect */
+#counter:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: default;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .job-header {
+        flex-direction: column;
+    }
+    
+    .dates {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* --- SKILLS SECTION STYLES --- */
+
+/* The Grid Layout: Automatically fits columns based on screen size */
+.skills-grid {
+    display: grid;
+    /* This magic line creates responsive columns without media queries */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* The Individual Cards (Matching your .job style) */
+.skill-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top: 4px solid #0056b3; /* Blue accent on top */
+    transition: transform 0.2s ease;
+}
+
+/* Optional: Slight lift effect when hovering over a skill category */
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Header inside the card */
+.skill-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.skill-header h4 {
+    font-size: 1.1rem;
+    color: #0a192f;
+    margin: 0;
+}
+
+/* Icons inside the header */
+.skill-header i {
+    font-size: 1.5rem;
+    color: #64ffda; /* Matches your Teal accent */
+    margin-right: 10px;
+    /* Optional: background circle for the icon */
+    background: #0a192f;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* The List of Skills */
+.skill-card ul {
+    list-style: none; /* Remove default bullets */
+    margin: 0;
+}
+
+.skill-card li {
+    padding: 5px 0;
+    font-size: 0.95rem;
+    color: #555;
+    border-bottom: 1px dashed #f0f0f0; /* Subtle separator lines */
+}
+
+.skill-card li:last-child {
+    border-bottom: none;
+}
+
+/* --- HELPER CLASSES --- */
+
+/* Makes text bold (matches fw-bold) */
+.fw-bold {
+    font-weight: 700;
+}
+
+/* Makes text blue (matches text-primary) */
+.text-primary {
+    color: #0056b3 !important; /* The !important flag forces this to win. This matches your existing blue accents */
+}
+
+/* --- BLOG STYLES (Mimicking Resume Cards) --- */
+
+/* 1. Container: Slightly narrower than full width for better reading */
+.blog-container {
+    max-width: 800px; 
+    margin: 0 auto;
+}
+
+/* 2. The Card: Exact match to your .job class */
+.blog-post {
+    background: #ffffff;
+    padding: 30px; /* Matches job card spacing */
+    margin-bottom: 40px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-left: 4px solid #0056b3; /* CHANGED: Resume Blue instead of Teal */
+    transition: transform 0.2s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-2px); /* Subtle lift effect like a professional card */
+}
+
+/* 3. The Header: Clean and organized */
+.post-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Keep this one (separates title from text) */
+    padding-bottom: 15px;
+}
+
+.post-date {
+    display: inline-block;
+    font-style: italic;
+    color: #666; /* Matches .dates in resume */
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.post-header h2 {
+    color: #0a192f;
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+/* 4. The Content: Fixing the "Detached" look */
+.post-content p {
+    margin-bottom: 1.2rem;
+    color: #444;
+    line-height: 1.7;
+}
+
+/* CRITICAL FIX: Override the global h3 border */
+.post-content h3 {
+    border-bottom: none !important; /* Forces the line to disappear */
+    padding-bottom: 0;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    color: #0056b3; /* Resume Blue */
+    font-size: 1.3rem;
+}
+
+/* 5. Lists: Make them look like Resume bullet points */
+.post-content ul {
+    background: #f8f9fa; /* Light gray box for list items */
+    padding: 15px 20px 15px 35px; /* Extra left padding for bullets */
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-left: 3px solid #cbd5e1; /* Subtle accent on the list itself */
+}
+
+.post-content li {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.post-content blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 4px solid #64ffda; /* Keep Teal here for variety/highlight */
+    background: #f0fcf9;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+/* 6. Footer & Tags */
+.post-footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+}
+
+.tag {
+    display: inline-block;
+    background: #e6f1ff; /* Light Blue background */
+    color: #0056b3;       /* Blue text */
+    padding: 4px 10px;
+    border-radius: 4px;   /* Squared edges like resume badges */
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* The Journey Log Container */
+.journey-log {
+    background: #f8f9fa; /* Light gray background */
+    border-left: 5px solid #007bff; /* Blue accent bar */
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.journey-log h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* The List of Articles */
+.journey-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.journey-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.journey-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.journey-date {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.journey-link {
+    text-decoration: none;
+    font-weight: 700;
+    color: #0d6efd;
+    font-size: 1.05rem;
+}
+
+.journey-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.journey-snippet {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+}
