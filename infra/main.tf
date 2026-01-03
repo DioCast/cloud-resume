@@ -97,19 +97,18 @@ resource "google_storage_bucket_object" "zip_file" {
 }
 
 # --------------------------------------------------------------------------------
-# FIX: Grant the Build Service Account access to ALL Buckets (Project Level)
+# SECURITY SCRUB: Least Privilege Access
 # --------------------------------------------------------------------------------
 
-# 1. Get the project details (if you haven't already)
+# 1. Get Project Details (To find the robot's email)
 data "google_project" "project" {
 }
 
-# 2. Give the "Compute Robot" permission to read ANY bucket in the project
-# (This fixes the error for the hidden 'gcf-sources' bucket)
-resource "google_project_iam_member" "project_storage_access" {
-  project = var.project_id
-  role    = "roles/storage.objectViewer"
-  member  = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+# 2. Grant the Robot access ONLY to the specific function source bucket
+resource "google_storage_bucket_iam_member" "function_bucket_reader" {
+  bucket = google_storage_bucket.function_bucket.name
+  role   = "roles/storage.objectViewer"
+  member = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
 }
 
 # 4. Deploy the Cloud Function
@@ -144,21 +143,6 @@ resource "google_cloudfunctions_function_iam_member" "invoker" {
 # --------------------------------------------------------------------------------
 output "function_url" {
   value = google_cloudfunctions_function.visitor_counter.https_trigger_url
-}
-
-# --------------------------------------------------------------------------------
-# FINAL FIXES: Permissions for the Robot
-# --------------------------------------------------------------------------------
-
-# 1. Get Project Details
-# data "google_project" "project" {
-# }
-
-# 2. FIX FOR ERROR 13: Give the Robot the "Builder" role (Same as the "Grant All" button)
-resource "google_project_iam_member" "build_robot_role" {
-  project = var.project_id
-  role    = "roles/cloudbuild.builds.builder"
-  member  = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
 }
 
 # 3. FIX FOR CORS/CRASH: Give the Cloud Function permission to write to the Database
