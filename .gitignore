@@ -1,6 +1,31 @@
-.DS_Store
-.terraform/
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files (CRITICAL: Never commit these)
 *.tfstate
-*.tfstate.backup
+*.tfstate.*
+
+# Crash log files
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Exclude sensitive variables
+*.tfvars
+*.tfvars.json
+
+# Python cache (for your API)
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+env/
+
+# Mac OS junk
+.DS_Store
+
+# Ignore build artifacts
 *.zip
-gcp-key.json
