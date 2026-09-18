@@ -1,0 +1,25 @@
+steps:
+  #1. Sync ONLY the 'website' folder to your bucket
+  - name: "gcr.io/cloud-builders/gsutil"
+    args:
+      [
+        "-m",
+        "rsync",
+        "-r",
+        "-c",
+        "-d",
+        "website",
+        "gs://dio-castillo-cloud-public",
+      ]
+
+  # 2. Force browsers to re-check HTML files every time (Cache Busting)
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        gsutil setmeta -h "Cache-Control:no-cache, max-age=0" gs://dio-castillo-cloud-public/index.html
+        gsutil setmeta -h "Cache-Control:no-cache, max-age=0" gs://dio-castillo-cloud-public/blog.html
+
+options:
+  logging: CLOUD_LOGGING_ONLY
